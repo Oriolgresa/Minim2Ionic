@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <h3 class="text-center">Llistat d'estudiants filtrats</h3>
+    <p class="text-center">Fer click sobre el camp nom per ordenar la taula</p>
+    <br>
+    <div class="container">
+
+        <div class="row">
+            <form name="myForm" ng-submit="getEstudiantsFiltrats(filtre)" >
+                <h3>Filtres: </h3>
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg" placeholder="Nom" ng-model="filtre.nom">
+                    <br>
+                    <input type="text" class="form-control input-lg" placeholder="Estudis" ng-model="filtre.estudis">
+
+                </div>
+                <button id="filter" type="submit" class="btn btn-primary btn-lg">Filtrar</button>
+                <hr>
+                <!--<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button>
+                <button type="submit" class="btn btn-danger btn-lg" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>!-->
+            </form>
+            <table class="table table-striped">
+                <thead>
+                    <th><a ng-click="sortType = 'nom'; sortReverse = !sortReverse">Nom
+                        <span ng-show="sortType == 'nom' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'nom' && sortReverse" class="fa fa-caret-up"></span>
+                    </a></th>
+                    <th>Direcció</th>
+                    <th>Tlf casa</th>
+                    <th>Tlf feina</th>
+                    <th>Estudis</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="estudiant in estudiants | orderBy:sortType:sortReverse" >
+                        <td>{{estudiant.nom}}</td>
+                        <td>{{ estudiant.direccio }}</td>
+                        <td>{{ estudiant.telefons.casa }}</td>
+                        <td>{{ estudiant.telefons.feina }}</td>
+                        <td>{{ estudiant.estudis }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>

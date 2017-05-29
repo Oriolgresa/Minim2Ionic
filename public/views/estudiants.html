@@ -1,0 +1,49 @@
+<div class="jumbotron text-center">
+    <h3>Pàgina dels estudiants</h3>
+    <br>
+    <div class="container">
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+            <table class="table table-striped">
+                <tr class="info">
+                    <td>Nom</td>
+                    <td>Direcció</td>
+                    <td>Tlf casa</td>
+                    <td>Tlf feina</td>
+                    <td>Estudis</td>
+                </tr>
+                <tr ng-repeat="estudiant in estudiants" ng-click="selectPersona(persona)">
+                    <td>{{ estudiant.nom }}</td>
+                    <td>{{ estudiant.direccio }}</td>
+                    <td>{{ estudiant.telefons.casa }}</td>
+                    <td>{{ estudiant.telefons.feina }}</td>
+                    <td>{{ estudiant.estudis }}</td>
+                    <td><button ng-click="deleteEstudiant(estudiant._id)">x</button></td>
+                    <td><a href = "#/estudiants/{{estudiant._id}}"> <button>Modificar</button></a></td>
+                </tr>
+            </table>
+            <a href = "#/filtre"> <button class="btn btn-primary btn-lg" >Filtrar</button></a>
+        </div>
+        <div class="col-sm-4 col-sm-offset-1 text-center">
+            <form name="myForm">
+                <p>{{ message }}</p>
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Nom" ng-model="newEstudiant.nom" required>
+                    <br>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Direcció" ng-model="newEstudiant.direccio" required>
+                    <br>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Telèfon casa" ng-model="newEstudiant.telefons.casa" required>
+                    <br>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Telèfon feina" ng-model="newEstudiant.telefons.feina" required>
+                    <br>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Estudis" ng-model="newEstudiant.estudis" required>
+
+                </div>
+                <button type="submit" class="btn btn-success btn-lg" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
